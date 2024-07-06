@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System</title>
+    <link rel="stylesheet" href="/public/css/pos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#" id="dashboard-link">Dashboard</a></li>
+                <li><a href="#" id="add-item-link">Item List</a></li>
+                <li><a href="#" id="add-item-link">Add Item</a></li>
+                <li><a href="#" id="add-item-link">Sales History</a></li>
+                <li><a href="#" id="remove-item-link">Remove Item</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="top-bar">
+                <input type="text" id="product-search" list="product-options" placeholder="Search for a product...">
+                <datalist id="product-options"></datalist>
+                <button id="edit-button">Edit</button>
+            </div>
+            
+            <div class="scrollable-content">
+                <div class="product-section">
+                    <h2>All Products</h2>
+                    <ul id="product-list"></ul>
+                </div>
+                <div class="billing-section">
+                    <h1>Billing Sheet</h1>
+                    <table id="billing-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="total-section">
+                <label for="discount">Discount (%): </label>
+                <input type="number" id="discount" min="0" max="100" value="0">
+                <div id="total-price">Total Price: $0.00</div>
+                <input type="number" id="amount-paid" placeholder="Amount Paid" step="0.01">
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/pos.js"></script>
+</body>
+</html>
