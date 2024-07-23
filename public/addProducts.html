@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wizzy | Add Product</title>
+    <link rel="stylesheet" href="/public/css/add_product.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" class="active"
+              ><i class="bx bx-home-circle"></i><span>Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="bx bx-grid-alt"></i><span>Explore</span></a>
+          </li>
+          <li>
+            <a href="/public/addProducts.html"
+              ><i class="bx bx-import"></i><span>Add Product</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="bx bx-collection"></i><span>Inventory</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="bx bx-line-chart"></i><span>Statistics</span></a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="bx bx-chat"></i><span>Messages</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="bx bx-cog"></i><span>Settings</span></a>
+          </li>
+          <li>
+            <a href="#" data-resize-btn
+              ><i class="bx bx-chevrons-right"></i><span>Collapse</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="container">
+      <h1>Add Item</h1>
+      <div class="form-data">
+        <div class="form-inputs">
+          <form id="productForm" method="POST" enctype="multipart/form-data">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter Name"
+              required
+            />
+            <label for="itemCode">Item Code</label>
+            <input
+              type="text"
+              id="itemCode"
+              name="itemCode"
+              placeholder="Enter Item Code"
+              required
+            />
+            <label for="retailPrice">Retail Price</label>
+            <input
+              type="number"
+              id="retailPrice"
+              name="retailPrice"
+              placeholder="Enter Retail Price"
+              required
+            />
+            <label for="categoryInput">Category</label>
+            <input
+              type="text"
+              id="categoryInput"
+              name="category"
+              placeholder="Enter Category"
+              required
+            />
+            <div id="categoryDropdown" class="dropdown-content"></div>
+            <label for="wholesalePrice">Wholesale Price</label>
+            <input
+              type="number"
+              id="wholesalePrice"
+              name="wholesalePrice"
+              placeholder="Enter Wholesale Price"
+              required
+            />
+            <label for="quantity">Quantity</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              placeholder="Enter Quantity"
+              required
+            />
+            <label for="description">Description</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              required
+            />
+            <button type="submit">Add Product</button>
+          </form>
+        </div>
+        <div class="image-preview-container">
+          <button type="button" id="uploadButton">Choose Image</button>
+          <input
+            type="file"
+            id="imageInput"
+            name="image"
+            accept="image/*"
+            style="display: none"
+          />
+          <img
+            id="imageElement"
+            style="display: none; max-width: 100%; height: auto"
+          />
+          <p id="imageText">No image chosen</p>
+        </div>
+      </div>
+    </div>
+    <script src="/public/js/add_product.js"></script>
+  </body>
+</html>

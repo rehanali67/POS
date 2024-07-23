@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
         const payload = { user: { id: user.id } };
 
         // Sign the JWT token with expiration time (e.g., 1 hour)
-        jwt.sign(payload, 'Reshan522', { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, 'Reshan522', (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
         const payload = { user: { id: user.id } };
 
         // Sign the JWT token with expiration time (e.g., 1 hour)
-        jwt.sign(payload, 'Reshan522', { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, 'Reshan522', (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
