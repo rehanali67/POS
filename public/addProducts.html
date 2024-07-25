@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wizzy | Add Product</title>
     <link rel="stylesheet" href="/public/css/add_product.css" />
+    <link rel="shortcut icon" href="/public/images/logo.png" type="image/x-icon">
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -59,7 +60,11 @@
       <h1>Add Item</h1>
       <div class="form-data">
         <div class="form-inputs">
-          <form id="productForm" method="POST" enctype="multipart/form-data">
+          <form
+            action="/api/products"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <label for="name">Name</label>
             <input
               type="text"
@@ -117,18 +122,23 @@
               placeholder="Enter Description"
               required
             />
+            <!-- Move the file input inside the form -->
+            <label for="imageInput">Product Image</label>
+            <input
+              type="file"
+              id="imageInput"
+              name="image"
+              accept="image/*"
+              style="display: block"
+            />
             <button type="submit">Add Product</button>
           </form>
         </div>
         <div class="image-preview-container">
-          <button type="button" id="uploadButton">Choose Image</button>
-          <input
-            type="file"
-            id="imageInput"
-            name="image"
-            accept="image/*"
-            style="display: none"
-          />
+          <!-- Remove this button since we are using the file input directly in the form -->
+          <button type="button" id="uploadButton" style="display: none">
+            Choose Image
+          </button>
           <img
             id="imageElement"
             style="display: none; max-width: 100%; height: auto"

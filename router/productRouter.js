@@ -1,8 +1,12 @@
-const express = require('express');
+import express from 'express';
+import productController from '../controllers/productController.js';
+
 const router = express.Router();
-const productController = require('../controllers/productController');
 
-// Use the upload middleware and addProduct function from productController
-router.post('/api/products', productController.upload, productController.addProduct);
+// Route to get all products
+router.get('/', productController.getProducts);
 
-module.exports = router;
+// Route to add a new product
+router.post('/', productController.upload.single('image'), productController.addProduct);
+
+export default router;

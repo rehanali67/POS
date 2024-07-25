@@ -1,8 +1,8 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const auth = require('../middleware/auth'); // Middleware to authenticate token
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
+import auth from '../middleware/auth.js'; // Default import
 
 const router = express.Router();
 
@@ -15,20 +15,10 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ msg: 'User already exists' });
         }
 
-        user = new User({
-            name,
-            email,
-            password
-        });
-
+        user = new User({ name, email, password });
         await user.save();
 
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
+        const payload = { user: { id: user.id } };
         jwt.sign(payload, 'Reshan522', (err, token) => {
             if (err) throw err;
             res.json({ token });
@@ -53,12 +43,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
 
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
+        const payload = { user: { id: user.id } };
         jwt.sign(payload, 'Reshan522', { expiresIn: '1h' }, (err, token) => {
             if (err) throw err;
             res.json({ token });
@@ -98,4 +83,4 @@ router.put('/avatar', auth, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router; // Default export

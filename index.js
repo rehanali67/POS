@@ -1,46 +1,46 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const path = require("path");
-const authRouter = require("./router/authRouter");
-const productRouter = require("./router/productRouter");
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import path from 'path';
+import authRouter from './router/authRouter.js';
+import productRouter from './router/productRouter.js';
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json());
-app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Adjusted path
+app.use('/public', express.static(path.join(process.cwd(), 'public')));
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'))); // Adjusted path
 
 // Routes
-app.use("/auth", authRouter);
-app.use("/api/products", productRouter); // Ensure this line is here
+app.use('/auth', authRouter);
+app.use('/api/products', productRouter);
 
 // Serve the starting page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'starting-page.html'));
+  res.sendFile(path.join(process.cwd(), 'public', 'starting-page.html'));
 });
 
 // Serve other HTML files
-app.get("/home", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "home.html"));
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'home.html'));
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'login.html'));
 });
 
-app.get("/pos", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+app.get('/pos', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
 
-app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "register.html"));
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'register.html'));
 });
 
-app.get("/profile", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "profile.html"));
+app.get('/profile', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'profile.html'));
 });
 
 // Connect to MongoDB

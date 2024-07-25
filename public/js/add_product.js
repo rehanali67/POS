@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageText = document.getElementById('imageText');
     const categoryInput = document.getElementById('categoryInput');
     const categoryDropdown = document.getElementById('categoryDropdown');
-    const productForm = document.getElementById('productForm');
+    const productForm = document.querySelector('form');
 
     const categories = ['Breakfast', 'Lunch', 'Dinner', 'Beverages', 'Desserts', 'Side Dish', 'Appetizers', 'Soup'];
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Form submission
     productForm.addEventListener('submit', (event) => {
         event.preventDefault();
-    
+
         const formData = new FormData(productForm);
 
         fetch('/api/products', {

@@ -1,0 +1,438 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Editor</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+        body {
+            --sb-width: 5rem;
+            font-family: "Rubik", sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f0f0f0;
+            overflow-x: hidden;
+            display: flex;
+        }
+
+        body.sb-expanded {
+            --sb-width: 12.5rem;
+        }
+
+        aside {
+            position: fixed;
+            inset: 0 auto 0 0;
+            padding: 1rem;
+            width: var(--sb-width);
+            background-color: white;
+            transition: width 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        nav {
+            height: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        nav li:last-child {
+            margin-top: auto;
+        }
+
+        nav a {
+            display: flex;
+            font-family: "Rubik", sans-serif;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.625rem 0.875rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            color: black;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.3s ease;
+        }
+
+        nav a.active,
+        nav a:hover,
+        nav a:focus-visible {
+            outline: none;
+            color: #fff;
+            background-color: #007bff;
+            transform: scale(1.1);
+        }
+
+        nav a span {
+            font-size: 0.875rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .sb-expanded nav a span {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sb-expanded aside .bx-chevrons-right {
+            transform: rotate(180deg);
+        }
+
+        /* Animated Icons */
+        nav a i {
+            transition: transform 0.3s ease;
+        }
+
+        .sb-expanded nav a i {
+            transform: translateX(5px);
+        }
+
+        .container {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .search-bar input[type="text"] {
+            flex: 1;
+            margin-left: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .edit-button {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            background-color: #fff;
+            width: 100%;
+            max-width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content .top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .card-content .top div {
+            margin-right: 10px;
+        }
+
+        .card-content .top .product-name, .card-content .top .item-code {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-content .top .product-name input, .card-content .top .item-code input {
+            border: none;
+            background: none;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .card-content .category {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .card-content .description {
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-content .price {
+            font-weight: bold;
+        }
+
+        .edit-icon {
+            cursor: pointer;
+            color: #007bff;
+            font-size: 14px;
+            margin-left: 5px;
+            display: none; /* Initially hidden */
+        }
+
+        .edit-icon:hover {
+            color: #0056b3;
+        }
+
+        .show-edit .edit-icon {
+            display: inline; /* Show icons when editing */
+        }
+
+        .show-edit .card-content input, .show-edit .card-content textarea {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+        .edit-button.active + .search-bar {
+            display: flex;
+        }
+
+        .save-button {
+            display: none;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+        .show-edit .save-button {
+            display: inline; /* Show save button when editing */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .product-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-card img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+  <aside>
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-home-circle"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-grid-alt"></i>
+            <span>Explore</span>
+          </a>
+        </li>
+        <li>
+          <a href="/public/addProducts.html">
+            <i class='bx bx-import'></i>
+            <span>Add Product</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-collection"></i>
+            <span>Inventory</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-line-chart'></i>
+            <span>Statistics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span>Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" data-resize-btn>
+            <i class="bx bx-chevrons-right"></i>
+            <span>Collapse</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+    <div class="container">
+        <button class="edit-button" id="editButton">Edit</button>
+        <button class="save-button" id="saveButton">Save</button>
+        <div class="search-bar hidden" id="searchBar">
+            <label for="searchInput">Search:</label>
+            <input type="text" id="searchInput" placeholder="Search by name or item code">
+        </div>
+        <div id="productList"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editButton = document.getElementById('editButton');
+            const saveButton = document.getElementById('saveButton');
+            const searchBar = document.getElementById('searchBar');
+            const productList = document.getElementById('productList');
+
+            // Toggle edit mode
+            editButton.addEventListener('click', () => {
+                document.body.classList.toggle('show-edit');
+                searchBar.classList.toggle('hidden');
+                saveButton.classList.toggle('hidden');
+            });
+
+            // Save changes
+            saveButton.addEventListener('click', () => {
+                document.body.classList.remove('show-edit');
+                searchBar.classList.add('hidden');
+                saveButton.classList.add('hidden');
+                // Save logic here (e.g., send updated data to the backend)
+            });
+
+            // Fetch products (this should be replaced with actual backend fetch logic)
+            const products = [
+                {
+                    id: 1,
+                    name: 'Product 1',
+                    itemCode: 'P001',
+                    category: 'Category 1',
+                    description: 'This is product 1.',
+                    price: 10.00,
+                    imageUrl: 'https://via.placeholder.com/150'
+                },
+                {
+                    id: 2,
+                    name: 'Product 2',
+                    itemCode: 'P002',
+                    category: 'Category 2',
+                    description: 'This is product 2.',
+                    price: 20.00,
+                    imageUrl: 'https://via.placeholder.com/150'
+                }
+                // Add more products as needed
+            ];
+
+            // Render products
+            const renderProducts = () => {
+                productList.innerHTML = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+                    productCard.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}">
+                        <div class="card-content">
+                            <div class="top">
+                                <div class="product-name">
+                                    <input type="text" value="${product.name}" disabled>
+                                    <i class="fas fa-edit edit-icon"></i>
+                                </div>
+                                <div class="item-code">
+                                    <input type="text" value="${product.itemCode}" disabled>
+                                    <i class="fas fa-edit edit-icon"></i>
+                                </div>
+                            </div>
+                            <div class="category">${product.category}</div>
+                            <div class="description">${product.description}</div>
+                            <div class="price">$${product.price.toFixed(2)}</div>
+                        </div>
+                    `;
+                    productList.appendChild(productCard);
+                });
+
+                // Enable editing for product name and item code
+                const editIcons = document.querySelectorAll('.edit-icon');
+                editIcons.forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        const input = icon.previousElementSibling;
+                        input.disabled = !input.disabled;
+                        if (!input.disabled) {
+                            input.focus();
+                        }
+                    });
+                });
+            };
+
+            renderProducts();
+        });
+    </script>
+</body>
+</html>

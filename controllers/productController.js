@@ -1,14 +1,20 @@
-const multer = require('multer');
-const path = require('path');
-const Product = require('../models/Product');
+import { v2 as cloudinary } from 'cloudinary';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import Product from '../models/Product.js';
 
-// Define the upload path relative to the public directory
-const uploadPath = path.join(__dirname, '../public/uploads');
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: 'dbl7t5r3a',
+    api_key: '768326357315211',
+    api_secret: '2RMEO6HB79heMtJy5d5uqC84Ma8' // Ensure your API secret is stored securely
+});
 
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, uploadPath);
+        cb(null, 'public/uploads/'); // Temporary storage before uploading to Cloudinary
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname));
@@ -17,11 +23,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Export the upload middleware for use in routes
-exports.upload = upload.single('image');
-
 // Get all products
-exports.getProducts = async (req, res) => {
+const getProducts = async (req, res) => {
     try {
         const products = await Product.find();
         res.json(products);
@@ -31,19 +34,28 @@ exports.getProducts = async (req, res) => {
 };
 
 // Add a new product
-exports.addProduct = async (req, res) => {
-    console.log('Request body:', req.body); // Log request body
-    console.log('Uploaded file:', req.file); // Log uploaded file
+const addProduct = async (req, res) => {
+    console.log('Request body:', req.body);
+    console.log('Uploaded file:', req.file); // Check if file is being processed
 
     const { name, itemCode, retailPrice, category, wholesalePrice, quantity, description } = req.body;
     const image = req.file;
 
-    // Check if all fields and image are provided
     if (!name || !itemCode || !retailPrice || !category || !wholesalePrice || !quantity || !description || !image) {
         return res.status(400).json({ success: false, message: 'Please fill all fields and upload an image.' });
     }
 
-    // Create a new product with the image path
+    let uploadedImageUrl;
+    try {
+        const result = await cloudinary.uploader.upload(image.path, {
+            folder: 'uploads'
+        });
+        uploadedImageUrl = result.secure_url;
+        fs.unlinkSync(image.path);
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Image upload failed.', error: error.message });
+    }
+
     const product = new Product({
         name,
         itemCode,
@@ -52,7 +64,7 @@ exports.addProduct = async (req, res) => {
         wholesalePrice,
         quantity,
         description,
-        image: '/uploads/' + path.basename(image.path) // Store relative path
+        image: uploadedImageUrl
     });
 
     try {
@@ -61,4 +73,10 @@ exports.addProduct = async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
+};
+
+export default {
+    upload,
+    getProducts,
+    addProduct
 };
