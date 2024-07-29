@@ -75,8 +75,42 @@ const addProduct = async (req, res) => {
     }
 };
 
+// Delete a product
+const deleteProduct = async (req, res) => {
+    const productId = req.params.id;
+    try {
+        const product = await Product.findByIdAndDelete(productId);
+        if (!product) {
+            return res.status(404).json({ success: false, message: 'Product not found' });
+        }
+        res.json({ success: true, message: 'Product deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Server error', error: err.message });
+    }
+};
+
+// Update a product
+const editProduct = async (req, res) => {
+    const productId = req.params.id;
+    const updates = req.body;
+    
+    try {
+        const product = await Product.findByIdAndUpdate(productId, updates, { new: true });
+        if (!product) {
+            return res.status(404).json({ success: false, message: 'Product not found' });
+        }
+        res.json({ success: true, product });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Server error', error: err.message });
+    }
+};
+
 export default {
     upload,
     getProducts,
-    addProduct
+    addProduct,
+    deleteProduct,
+    editProduct 
 };
+
+

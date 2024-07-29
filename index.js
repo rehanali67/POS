@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import authRouter from './router/authRouter.js';
 import productRouter from './router/productRouter.js';
+import salesRouter from './router/salesRouter.js'; 
+import expenseRouter from './router/expenseRouter.js'; // Import the expense router
+import statisticsRouter from './router/statistics.js'; // Import the statistics router
+
 
 const app = express();
 
@@ -16,15 +20,30 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'))); // Adj
 // Routes
 app.use('/auth', authRouter);
 app.use('/api/products', productRouter);
+app.use('/api', salesRouter); // Use salesRouter for handling sales
+app.use('/api/statistics', statisticsRouter); // for statistics route
+app.use('/api/expenses', expenseRouter);
 
 // Serve the starting page
 app.get('/', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'starting-page.html'));
 });
+app.get('/statistics', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'statistics.html'));
+});
 
 // Serve other HTML files
 app.get('/home', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'home.html'));
+});
+app.get('/sales-history', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'salesHistory.html'));
+});
+app.get('/expense', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'expense.html'));
+});
+app.get('/all-products', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'productCollection.html'));
 });
 
 app.get('/login', (req, res) => {

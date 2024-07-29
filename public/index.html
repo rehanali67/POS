@@ -1,163 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wizzy | Home</title>
+    <link
+      rel="shortcut icon"
+      href="/public/images/logo.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/public/css/pos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wizzy | Home</title>
-  <link rel="shortcut icon" href="/public/images/logo.png" type="image/x-icon">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="/public/css/pos.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap" rel="stylesheet">
-  <script src="https://cdn.lordicon.com/lordicon.js"></script>
-</head>
+  <body>
+    <aside>
+      <nav>
+        <ul>
+          <li>
+            <a href="/public/index.html" class="active">
+              <i class="bx bx-home-circle"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-grid-alt"></i>
+              <span>Explore</span>
+            </a>
+          </li>
+          <li>
+            <a href="/public/addProducts.html">
+              <i class="bx bx-import"></i>
+              <span>Add Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="/public/productCollection.html">
+              <i class="bx bx-collection"></i>
+              <span>Inventory</span>
+            </a>
+          </li>
+          <li>
+            <a href="/public/salesHistory.html">
+              <i class="bx bx-history"></i>
+              <span>Sales History</span>
+            </a>
+          </li>
+          <li>
+            <a href="/public/expense.html">
+              <i class='bx bx-money'></i>
+              <span>Expense</span>
+            </a>
+          </li>
+          <li>
+            <a href="/public/statistics.html">
+              <i class="bx bx-line-chart"></i>
+              <span>Statistics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-chat"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-resize-btn>
+              <i class="bx bx-chevrons-right"></i>
+              <span>Collapse</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-<body>
-  <aside>
-    <nav>
-      <ul>
-        <li>
-          <a href="#" class="active">
-            <i class="bx bx-home-circle"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span>Explore</span>
-          </a>
-        </li>
-        <li>
-          <a href="/public/addProducts.html">
-            <i class='bx bx-import'></i>
-            <span>Add Product</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-collection"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-line-chart'></i>
-            <span>Statistics</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-chat"></i>
-            <span>Messages</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span>Settings</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" data-resize-btn>
-            <i class="bx bx-chevrons-right"></i>
-            <span>Collapse</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+    <div class="container">
+      <h1
+        style="
+          font-family: 'Playwrite AR', cursive;
+          margin-bottom: 50px;
+          font-weight: bolder;
+          text-align: center;
+        "
+        class="logo_name"
+      >
+        WizzyPOS
+      </h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Search Your Menu Here" />
+        <button class="add-to-cart-btn">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
 
-  <div class="container">
-    <h1 style='font-family: "Playwrite AR", cursive; margin-bottom: 50px; font-weight: bolder; text-align: center;' class="logo_name">WizzyPOS</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search Your Menu Here">
-      <button class="add-to-cart-btn">
-        <i class="fa fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-      </button>
+      <h3 id="toggleCategories">
+        Category
+        <i class="fa-solid fa-caret-down"></i>
+      </h3>
+      <div class="categories">
+        <div class="category" data-category="breakfast">
+          <i class="fa-solid fa-bread-slice"></i>
+          <span>Breakfast</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="lunch">
+          <i class="fa-solid fa-bowl-food"></i>
+          <span>Lunch</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="dinner">
+          <i class="bx bxs-coffee"></i>
+          <span>Dinner</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="beverages">
+          <i class="fa-solid fa-martini-glass-citrus"></i>
+          <span>Beverages</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="desserts">
+          <i class="fa-solid fa-ice-cream"></i>
+          <span>Desserts</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="side dish">
+          <i class="fa-solid fa-hotdog"></i>
+          <span>Side Dish</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="appetizer">
+          <i class="fa-solid fa-carrot"></i>
+          <span>Appetizer</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+        <div class="category" data-category="soup">
+          <i class="bx bxs-bowl-hot"></i>
+          <span>Soup</span>
+          <span class="category-details">12 Menu In Stock</span>
+        </div>
+      </div>
+      <h3 class="category-title">All Items</h3>
+      
+
+      <div class="items" id="itemCardsContainer">
+        <!-- Item cards will be dynamically added here -->
+      </div>
     </div>
-    
-    <h3 id="toggleCategories">Category
-      <i class="fa-solid fa-caret-down"></i>
-    </h3>
-    <div class="categories">
-      <div class="category">
-        <i class="fa-solid fa-bread-slice"></i>
-        <span>Breakfast</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class="fa-solid fa-bowl-food"></i>
-        <span>Lunch</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class='bx bxs-coffee'></i>
-        <span>Dinner</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class="fa-solid fa-martini-glass-citrus"></i>
-        <span>Beverages</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class="fa-solid fa-ice-cream"></i>
-        <span>Desserts</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class="fa-solid fa-hotdog"></i>
-        <span>Side Dish</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class="fa-solid fa-carrot"></i>
-        <span>Appetizer</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-      <div class="category">
-        <i class='bx bxs-bowl-hot'></i>
-        <span>Soup</span>
-        <span class="category-details">12 Menu In Stock</span>
-      </div>
-    </div>
-    
-    <h3>All Items</h3>
-    <div class="items" id="itemCardsContainer">
-      <!-- Item cards will be dynamically added here -->
-    </div>
 
-  </div>
+   <!-- Button to trigger the checkout popup -->
 
-  <div id="checkoutPopup" class="popup hidden">
+   <div id="checkoutPopup" class="popup hidden">
     <div class="popup-content">
-      <h2>Checkout</h2>
-      <div id="itemsList">
-        <!-- Dynamically filled with purchased items -->
+      <div class="popup-left">
+        <h2>Checkout</h2>
+        <div id="itemsListContainer">
+          <table id="itemsList">
+            <thead>
+              <tr>
+                <th>Item Code</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price per Item</th>
+                <th>Total Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamically filled with purchased items -->
+            </tbody>
+          </table>
+          <div class="form-group">
+            <label for="totalAmount">Total Amount:</label>
+            <input type="text" id="totalAmount" readonly />
+          </div>
+          <div class="form-group">
+            <label for="amountPaid">Amount Paid:</label>
+            <input
+              type="number"
+              id="amountPaid"
+              placeholder="Enter amount paid"
+            />
+          </div>
+          <div class="form-group">
+            <label for="changeToReturn">Change to Return:</label>
+            <input type="text" id="changeToReturn" readonly />
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="totalAmount">Total Amount:</label>
-        <input type="text" id="totalAmount" readonly>
+      <div class="popup-right">
+        <h2>Customer Details</h2>
+        <div class="form-group">
+          <label for="customerName">Customer Name:</label>
+          <input type="text" id="customerName" placeholder="Enter customer name" />
+        </div>
+        <div class="form-group">
+          <label for="customerNumber">Customer Number:</label>
+          <input type="text" id="customerNumber" placeholder="Enter customer number" />
+        </div>
+        <button id="closePopup">Close</button>
+        <button id="confirmPayment">Confirm Payment</button>
       </div>
-      <div class="form-group">
-        <label for="amountPaid">Amount Paid:</label>
-        <input type="number" id="amountPaid" placeholder="Enter amount paid">
-      </div>
-      <div class="form-group">
-        <label for="changeToReturn">Change to Return:</label>
-        <input type="text" id="changeToReturn" readonly>
-      </div>
-      <button id="closePopup">Close</button>
-      <button id="confirmPayment">Confirm Payment</button>
     </div>
   </div>
+  
+  
 
-  <script src="/public/js/pos.js"></script>
-</body>
 
+    <script src="/public/js/pos.js"></script>
+  </body>
 </html>

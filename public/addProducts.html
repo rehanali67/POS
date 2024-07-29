@@ -20,42 +20,69 @@
       <nav>
         <ul>
           <li>
-            <a href="#" class="active"
-              ><i class="bx bx-home-circle"></i><span>Dashboard</span></a
-            >
+            <a href="/public/index.html" >
+              <i class="bx bx-home-circle"></i>
+              <span>Dashboard</span>
+            </a>
           </li>
           <li>
-            <a href="#"><i class="bx bx-grid-alt"></i><span>Explore</span></a>
+            <a href="#">
+              <i class="bx bx-grid-alt"></i>
+              <span>Explore</span>
+            </a>
           </li>
           <li>
-            <a href="/public/addProducts.html"
-              ><i class="bx bx-import"></i><span>Add Product</span></a
-            >
+            <a href="/public/addProducts.html" class="active">
+              <i class="bx bx-import"></i>
+              <span>Add Product</span>
+            </a>
           </li>
           <li>
-            <a href="#"
-              ><i class="bx bx-collection"></i><span>Inventory</span></a
-            >
+            <a href="/public/productCollection.html">
+              <i class="bx bx-collection"></i>
+              <span>Inventory</span>
+            </a>
           </li>
           <li>
-            <a href="#"
-              ><i class="bx bx-line-chart"></i><span>Statistics</span></a
-            >
+            <a href="/public/salesHistory.html">
+              <i class="bx bx-history"></i>
+              <span>Sales History</span>
+            </a>
           </li>
           <li>
-            <a href="#"><i class="bx bx-chat"></i><span>Messages</span></a>
+            <a href="/public/expense.html">
+              <i class='bx bx-money'></i>
+              <span>Expense</span>
+            </a>
           </li>
           <li>
-            <a href="#"><i class="bx bx-cog"></i><span>Settings</span></a>
+            <a href="/public/statistics.html">
+              <i class="bx bx-line-chart"></i>
+              <span>Statistics</span>
+            </a>
           </li>
           <li>
-            <a href="#" data-resize-btn
-              ><i class="bx bx-chevrons-right"></i><span>Collapse</span></a
-            >
+            <a href="#">
+              <i class="bx bx-chat"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-resize-btn>
+              <i class="bx bx-chevrons-right"></i>
+              <span>Collapse</span>
+            </a>
           </li>
         </ul>
       </nav>
     </aside>
+
     <div class="container">
       <h1>Add Item</h1>
       <div class="form-data">
@@ -147,6 +174,7 @@
         </div>
       </div>
     </div>
+    <div class="loader" id="loader"></div>
     <script src="/public/js/add_product.js"></script>
   </body>
 </html>

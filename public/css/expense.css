@@ -1,0 +1,259 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    --sb-width: 5rem;
+    --sb-expanded-width: 12.5rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    display: flex;
+}
+
+body.sb-expanded {
+    --sb-width: var(--sb-expanded-width);
+}
+
+aside {
+    position: fixed;
+    inset: 0 auto 0 0;
+    padding: 1rem;
+    width: var(--sb-width);
+    background-color: white;
+    transition: width 0.5s ease-in-out;
+    z-index: 1;
+    height: 100%;
+}
+
+nav {
+    height: 100%;
+}
+
+nav ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+nav li:last-child {
+    margin-top: auto;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 1.25rem;
+    color: black;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.3s ease;
+}
+
+nav a.active,
+nav a:hover,
+nav a:focus-visible {
+    outline: none;
+    color: #fff;
+    background-color: #007bff;
+    transform: scale(1.1);
+}
+
+nav a span {
+    font-size: 0.875rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+body.sb-expanded nav a span {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.sb-expanded aside .bx-chevrons-right {
+    transform: rotate(180deg);
+}
+
+nav a i {
+    transition: transform 0.3s ease;
+}
+
+body.sb-expanded nav a i {
+    transform: translateX(5px);
+}
+
+/* Main Content Styles */
+main {
+    margin-left: var(--sb-width);
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form input[type="number"],
+form button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+/* General Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Delete Button Styles */
+.btn-danger {
+    color: #dc3545;
+    font-size: 1.25rem; /* Adjust size as needed */
+}
+
+.btn-danger:hover {
+    background-color: #f8d7da;
+}
+
+/* Icon Styles */
+.btn i {
+    font-size: 1.25rem; /* Adjust icon size as needed */
+    transition: color 0.3s ease;
+}
+
+.btn-danger:hover i {
+    color: #c82333;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Rounded corners for a modern look */
+    overflow: hidden; /* Ensures that rounded corners are visible */
+}
+
+thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3; /* Darker border for a more defined look */
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.875rem; /* Slightly smaller font size for readability */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternating row colors for better readability */
+}
+
+tbody tr:hover {
+    background-color: #e2e6ea; /* Highlight row on hover for better user interaction */
+}
+
+tfoot td {
+    background-color: #f1f1f1;
+    padding: 12px 15px;
+    font-weight: bold;
+}
+
+table caption {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    text-align: left;
+    color: #333;
+}
+
+/* Responsive Design for Table */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+
+    thead th, tbody td {
+        padding: 8px 10px; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.75rem; /* Further reduce font size for very small screens */
+    }
+
+    thead th, tbody td {
+        padding: 6px 8px; /* Adjust padding for very small screens */
+    }
+}

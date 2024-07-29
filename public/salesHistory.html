@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales History</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/css/salesHistory.css">
+    <link rel="shortcut icon" href="/public/images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <aside>
+        <nav>
+          <ul>
+            <li>
+              <a href="/public/index.html" >
+                <i class="bx bx-home-circle"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-grid-alt"></i>
+                <span>Explore</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/addProducts.html">
+                <i class="bx bx-import"></i>
+                <span>Add Product</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/productCollection.html">
+                <i class="bx bx-collection"></i>
+                <span>Inventory</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/salesHistory.html" class="active">
+                <i class="bx bx-history"></i>
+                <span>Sales History</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/expense.html">
+                <i class='bx bx-money'></i>
+                <span>Expense</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/statistics.html">
+                <i class="bx bx-line-chart"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-chat"></i>
+                <span>Messages</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-cog"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-resize-btn>
+                <i class="bx bx-chevrons-right"></i>
+                <span>Collapse</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+  
+    <div class="container">
+        <div class="header">
+            <div class="total-sales">
+                <h2>Total Sales</h2>
+                <span id="totalSales">$7500</span> <!-- Static value -->
+            </div>
+            <div class="total-orders">
+                <h2>Total Orders</h2>
+                <span id="totalOrders">150</span> <!-- Static value -->
+            </div>
+        </div>
+        <div class="sales-history">
+            <h2>Sales History</h2>
+            <div class="sales-list" id="salesList">
+                <!-- Sale cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="popup hidden" id="checkoutPopup">
+        <div class="popup-content">
+            <div class="left">
+                <h2>Invoice Details</h2>
+                <table id="invoiceTable">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Code</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoiceTableBody">
+                        <!-- Table rows will be dynamically added here -->
+                    </tbody>
+                </table>
+                <div class="footer">
+                    <button id="printButton">Print</button>
+                    <button id="closePopupButton">Close</button>
+                </div>
+            </div>
+            <div class="right">
+                <h2>Customer Details</h2>
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" readonly>
+
+                <br />
+                <label for="customerEmail">Email:</label>
+                <input type="email" id="customerEmail" readonly />
+                <br />
+                <label for="customerPhone">Phone:</label>
+                <input type="text" id="customerPhone" readonly />
+            </div>
+        </div>
+    </div>
+    
+    <script src="/public/js/saleHistory.js"></script>
+</body>
+</html>

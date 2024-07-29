@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryDropdown = document.getElementById('categoryDropdown');
     const productForm = document.querySelector('form');
 
+    const loader = document.createElement('div');
+    loader.className = 'loader';
+    document.body.appendChild(loader);
+
     const categories = ['Breakfast', 'Lunch', 'Dinner', 'Beverages', 'Desserts', 'Side Dish', 'Appetizers', 'Soup'];
 
     // Populate category dropdown
@@ -64,6 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const formData = new FormData(productForm);
 
+        // Show loader and blur background
+        loader.style.display = 'block';
+        document.body.classList.add('blurred');
+
         fetch('/api/products', {
             method: 'POST',
             body: formData
@@ -77,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            console.log('Response data:', data);  // Added log
+            console.log('Response data:', data);
             if (data.success) {
                 alert('Product added successfully');
                 productForm.reset();
@@ -89,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error('Error:', error);
+        })
+        .finally(() => {
+            // Hide loader and remove blur
+            loader.style.display = 'none';
+            document.body.classList.remove('blurred');
         });
     });
 

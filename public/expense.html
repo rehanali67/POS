@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Management</title>
+    <link rel="stylesheet" href="/public/css/expense.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <aside>
+        <nav>
+          <ul>
+            <li>
+              <a href="/public/index.html" >
+                <i class="bx bx-home-circle"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-grid-alt"></i>
+                <span>Explore</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/addProducts.html">
+                <i class="bx bx-import"></i>
+                <span>Add Product</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/productCollection.html">
+                <i class="bx bx-collection"></i>
+                <span>Inventory</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/salesHistory.html">
+                <i class="bx bx-history"></i>
+                <span>Sales History</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/expense.html" class="active">
+                <i class='bx bx-money'></i>
+                <span>Expense</span>
+              </a>
+            </li>
+            <li>
+              <a href="/public/statistics.html">
+                <i class="bx bx-line-chart"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-chat"></i>
+                <span>Messages</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-cog"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-resize-btn>
+                <i class="bx bx-chevrons-right"></i>
+                <span>Collapse</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+  
+    <main>
+        <div class="content">
+            <h1>Expense Management</h1>
+            <div>
+                <h2>Total Expense: $<span id="totalExpense">0</span></h2>
+            </div>
+            <div class="centered-container">
+                <form id="expenseForm">
+                    <h1>Expense Management</h1>
+                    <input type="text" name="title" placeholder="Title" required>
+                    <input type="text" name="description" placeholder="Description" required>
+                    <input type="number" name="price" placeholder="Price" required>
+                    <button type="submit">Add Expense</button>
+                </form>
+                <h2>Expense History</h2>
+                <table id="expenseTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenseTableBody">
+                        <!-- Expenses will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="/public/js/expenseHistory.js"></script>
+</body>
+</html>
