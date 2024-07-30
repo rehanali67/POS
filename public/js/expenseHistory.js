@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateTotalExpense(amount) {
-    totalExpenseElement.textContent = `$${amount.toFixed(2)}`;
+    totalExpenseElement.textContent = `${amount.toFixed(2)}`;
   }
 
   window.deleteExpense = function(expenseId, price, row) {
