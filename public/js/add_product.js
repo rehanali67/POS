@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.style.display = 'block';
         document.body.classList.add('blurred');
 
-        fetch('/api/products', {
+        fetch('https://wizzypos.vercel.app/api/products', {
             method: 'POST',
             body: formData
         })
