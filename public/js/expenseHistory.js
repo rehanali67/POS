@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.deleteExpense = function(expenseId, price, row) {
-    fetch(`/api/expenses/${expenseId}`, {
+    fetch(`https://wizzypos.netlify.app/api/expenses/${expenseId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
