@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let totalExpense = 0;
 
   // Fetch existing expenses from the backend
-  fetch('/api/expenses')
+  fetch('https://wizzypos.netlify.app/api/expenses')
     .then(response => response.json())
     .then(data => {
       if (data.success) {
