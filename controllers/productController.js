@@ -1,14 +1,19 @@
+import dotenv from 'dotenv';
+dotenv.config(); // Load environment variables
 import { v2 as cloudinary } from 'cloudinary';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import Product from '../models/Product.js';
 
+
+
+
 // Configure Cloudinary
 cloudinary.config({
-    cloud_name: 'dbl7t5r3a',
-    api_key: '768326357315211',
-    api_secret: '2RMEO6HB79heMtJy5d5uqC84Ma8' // Ensure your API secret is stored securely
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET // Ensure your API secret is stored securely
 });
 
 // Set up multer storage
@@ -112,5 +117,3 @@ export default {
     deleteProduct,
     editProduct 
 };
-
-

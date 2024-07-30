@@ -2,11 +2,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
+import dotenv from 'dotenv';
 import authRouter from './router/authRouter.js';
 import productRouter from './router/productRouter.js';
 import salesRouter from './router/salesRouter.js';
 import expenseRouter from './router/expenseRouter.js';
 import statisticsRouter from './router/statistics.js';
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 
@@ -61,8 +65,8 @@ app.get('/profile', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'profile.html'));
 });
 
-// Connect to MongoDB
-const mongoURI = "mongodb+srv://RehanAli:Reshan522@cluster0.1kjcbox.mongodb.net/WizzyPOS";
+// Connect to MongoDB using environment variable
+const mongoURI = process.env.MONGODB_URI;
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
@@ -73,10 +77,10 @@ mongoose
 
 const PORT = process.env.PORT || 3000;
 
-if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
-}
+  console.log('MONGO_URI:', process.env.MONGO_URI);
+
 
 export default app;
