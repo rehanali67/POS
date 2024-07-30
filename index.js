@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors'; // Import cors
 import authRouter from './router/authRouter.js';
 import productRouter from './router/productRouter.js';
 import salesRouter from './router/salesRouter.js';
@@ -15,6 +16,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
+app.use(cors({
+  origin: 'https://pos-eta-ten.vercel.app', // Adjust this to match your frontend deployment URL
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use('/public', express.static(path.join(process.cwd(), 'public')));
@@ -77,10 +81,9 @@ mongoose
 
 const PORT = process.env.PORT || 3000;
 
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-  console.log('MONGO_URI:', process.env.MONGO_URI);
-
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+console.log('MONGO_URI:', process.env.MONGO_URI);
 
 export default app;
