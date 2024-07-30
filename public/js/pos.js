@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch products from the backend and update item cards
-  fetch('/api/products') // Adjust the endpoint as needed
+  fetch('https://wizzypos.vercel.app/api/products') // Adjust the endpoint as needed
       .then(response => response.json())
       .then(products => {
           const itemsContainer = document.querySelector('.items');
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }).filter(item => item); // Remove undefined values
 
       // Post sale to the backend
-      fetch('/api/sales', {
+      fetch('https://wizzypos.vercel.app/api/sales', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
