@@ -17,7 +17,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://pos-eta-ten.vercel.app', // Adjust this to match your frontend deployment URL
+  origin: 'https://pos-eta-ten.vercel.app/wizzypos', // Adjust this to match your frontend deployment URL
 }));
 app.use(bodyParser.json());
 app.use(express.json());
