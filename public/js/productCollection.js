@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch and render products
     const fetchAndRenderProducts = () => {
-        fetch('/api/products')
+        fetch('https://wizzypos.netlify.app/api/products')
             .then(response => response.json())
             .then(data => {
                 productTableBody.innerHTML = ''; // Clear existing rows
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (row) {
                             row.classList.add('slide-right');
                             setTimeout(() => {
-                                fetch(`/api/products/${productId}`, {
+                                fetch(`https://wizzypos.netlify.app/api/products/${productId}`, {
                                     method: 'DELETE'
                                 })
                                     .then(response => {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 updatedData[field] = cell.textContent;
                             });
                             // Call update API
-                            fetch(`/api/products/${productId}`, {
+                            fetch(`https://wizzypos.netlify.app/api/products/${productId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
