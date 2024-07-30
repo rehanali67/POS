@@ -63,7 +63,7 @@ app.get('/profile', (req, res) => {
 });
 
 // Connect to MongoDB
-const mongoURI = "mongodb+srv://RehanAli:Reshan522@cluster0.1kjcbox.mongodb.net/yourDatabaseName";
+const mongoURI = "mongodb+srv://RehanAli:Reshan522@cluster0.1kjcbox.mongodb.net/WizzyPOS";
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
