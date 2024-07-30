@@ -63,14 +63,16 @@ app.get('/profile', (req, res) => {
 });
 
 // Connect to MongoDB
-const mongoURI = "mongodb+srv://RehanAli:Reshan522@cluster0.1kjcbox.mongodb.net/WizzyPOS";
-mongoose
-  .connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+const mongoURI = "mongodb+srv://RehanAli:Reshan522@cluster0.1kjcbox.mongodb.net/WizzyPOS?retryWrites=true&w=majority";
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('MongoDB connection successful');
+    mongoose.connection.close(); // Close the connection after testing
   })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
