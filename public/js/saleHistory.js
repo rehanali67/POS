@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fetch sales data from the server
     const fetchSalesData = async () => {
         try {
-            const response = await fetch("/api/sales"); // Ensure this endpoint is correct
+            const response = await fetch("https://wizzypos.netlify.app/api/sales"); // Ensure this endpoint is correct
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (typeof saleId !== "string" || !saleId.trim()) {
                 throw new Error(`Invalid saleId: ${saleId}`);
             }
-            const response = await fetch(`/api/sales/${saleId}`);
+            const response = await fetch(`https://wizzypos.netlify.app/api/sales/${saleId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
