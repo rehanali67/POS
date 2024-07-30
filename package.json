@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js"
+    "build": "echo 'No build step required'"
   },
   "author": "",
   "license": "ISC",
