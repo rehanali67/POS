@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let totalExpense = 0;
 
   // Fetch existing expenses from the backend
-  fetch('/api/expenses')
+  fetch('https://wizzypos.vercel.app/api/expenses')
     .then(response => response.json())
     .then(data => {
       if (data.success) {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.deleteExpense = function(expenseId, price, row) {
-    fetch(`/api/expenses/${expenseId}`, {
+    fetch(`https://wizzypos.vercel.app/api/expenses/${expenseId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
