@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle("sb-expanded");
     });
     function fetchData() {
-        fetch('/api/statistics')
+        fetch('https://wizzypos.vercel.app/api/statistics')
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
