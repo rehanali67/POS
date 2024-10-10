@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.style.display = 'block';
         document.body.classList.add('blurred');
 
-        fetch('pos-production-8da1.up.railway.app/api/products', {
+        fetch('https://pos-production-8da1.up.railway.app/api/products', {
             method: 'POST',
             body: formData
         })
