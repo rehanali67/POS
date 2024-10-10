@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fetch sales data from the server
     const fetchSalesData = async () => {
         try {
-            const response = await fetch("https://wizzypos.vercel.app/api/sales"); // Ensure this endpoint is correct
+            const response = await fetch("pos-production-8da1.up.railway.app/api/sales"); // Ensure this endpoint is correct
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
